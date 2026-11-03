@@ -1,5 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
+import { clerkMiddleware } from "@clerk/express";
+
 import userRoutes from "./routes/user.route.js";
 import adminRoutes from "./routes/admin.route.js";
 import authRoutes from "./routes/auth.route.js";
@@ -15,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(clerkMiddleware()); // this middleware will verify the JWT and attach the user to the request object
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
