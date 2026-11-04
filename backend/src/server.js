@@ -9,7 +9,7 @@ import adminRoutes from "./routes/admin.route.js";
 import authRoutes from "./routes/auth.route.js";
 import albumRoutes from "./routes/album.route.js";
 import statsRoutes from "./routes/stats.route.js";
-import songsRoutes from "./routes/songs.route.js";
+import songsRoutes from "./routes/song.route.js";
 import { connectDB } from "./lib/db.js";
 
 dotenv.config();
