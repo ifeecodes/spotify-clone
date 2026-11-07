@@ -14,6 +14,7 @@ export const authCallback = async (req, res, next) => {
         imageUrl,
       });
     }
+    res.status(200).json({ message: "User authenticated successfully" });
   } catch (error) {
     console.log("Error in auth callback", error);
     next(error);

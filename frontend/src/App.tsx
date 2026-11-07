@@ -1,20 +1,19 @@
+import { Route, Routes } from "react-router";
+import HomePage from "./pages/home/HomePage";
+import AuthCallbackPage from "./pages/authcallback/AuthCallbackPage";
+import SSOCallback from "./pages/authcallback/SSOCallbackPage";
 
-import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react'
 
 function App() {
   return (
     <>
-      <header>
-        <Show when="signed-out">
-          <SignInButton />
-          <SignUpButton />
-        </Show>
-        <Show when="signed-in">
-          <UserButton />
-        </Show>
-      </header>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/auth-callback" element={<AuthCallbackPage />} />
+        <Route path="/sso-callback" element={<SSOCallback />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
