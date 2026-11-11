@@ -1,10 +1,11 @@
 import { LayoutDashboardIcon } from "lucide-react";
 import { Link } from "react-router";
-import { Show, SignOutButton } from '@clerk/react'
+import { Show, SignOutButton, UserButton } from '@clerk/react'
 import SignInOAuthButtons from "./SignInOAuthButtons";
+import { useAuthStore } from "@/stores/useAuthStore";
 
 const TopBar = () => {
-  const isAdmin = false;
+  const {isAdmin} = useAuthStore();
   return (
     <div
       className="flex items-center justify-between p-4 sticky top-0 bg-zinc-900/75 
@@ -12,7 +13,7 @@ const TopBar = () => {
     >
       <div className="flex gap-2 items-center">
         
-       {/* <img src="/spotify.png" className="size-8" alt="Spotify logo" />*/}
+       <img src="/spotify.png" className="size-8" alt="Spotify logo" />
         Spotify
       </div>
       <div className="flex items-center gap-4">
@@ -28,6 +29,8 @@ const TopBar = () => {
         <Show when="signed-out">
             <SignInOAuthButtons/>
         </Show>
+
+        <UserButton/>
 
       </div>
     </div>
