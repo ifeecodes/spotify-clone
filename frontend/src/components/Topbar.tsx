@@ -1,8 +1,10 @@
 import { LayoutDashboardIcon } from "lucide-react";
 import { Link } from "react-router";
-import { Show, SignOutButton, UserButton } from '@clerk/react'
+import { Show, UserButton } from '@clerk/react'
 import SignInOAuthButtons from "./SignInOAuthButtons";
 import { useAuthStore } from "@/stores/useAuthStore";
+import { cn } from "cn";
+import { buttonVariants } from "./ui/button";
 
 const TopBar = () => {
   const {isAdmin} = useAuthStore();
@@ -18,14 +20,12 @@ const TopBar = () => {
       </div>
       <div className="flex items-center gap-4">
         {isAdmin && (
-          <Link to={"/admin"}>
+          <Link to={"/admin"}
+          className={cn(buttonVariants({variant: "outline"}))}>
             <LayoutDashboardIcon className="size-4 mr-2" /> Admin Dashboard
           </Link>
         )}
 
-<Show when="signed-in">
-         <SignOutButton />
-        </Show>
         <Show when="signed-out">
             <SignInOAuthButtons/>
         </Show>
